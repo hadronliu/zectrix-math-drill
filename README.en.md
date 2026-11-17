@@ -7,8 +7,9 @@ the child **presses and holds a button and speaks the answer**, a fully local sp
 transcribes it to an integer, the app grades it and shows the result on the e-ink screen,
 with a session summary at the end. All speech processing stays on your machine.
 
-![Question card](docs/previews/question.png)
-![Result card](docs/previews/result_ok.png)
+![Mental math drill on the device: question](docs/photos/1117-1.jpeg)
+
+![Mental math drill on the device: result](docs/photos/1117-2.jpeg)
 
 ## Features
 

@@ -6,8 +6,9 @@
 本地语音识别转成整数，程序判题并在墨水屏显示结果，一组练完给出总结。
 全程语音在本机处理，音频不出局域网。
 
-![题目卡](docs/previews/question.png)
-![结果卡](docs/previews/result_ok.png)
+![墨水屏口算练习实拍：首页题目](docs/photos/1117-1.jpeg)
+
+![墨水屏口算练习实拍：答题结果](docs/photos/1117-2.jpeg)
 
 ## 功能
 
