@@ -1,0 +1,59 @@
+[package]
+name = "math-drill"
+version = "0.1.0"
+edition = "2021"
+description = "极趣墨水屏两位数乘法口算：出题 / 中文数字解析 / 判题 / 记录 / 墨水屏语音答题"
+license = "MIT"
+
+[features]
+default = []
+# 设备接入（墨水屏主循环与探针）需要旁侧克隆 zectrix-local-push-sdk：
+#   cargo build --features device
+# 其余（CLI 练习、ASR 链路、渲染）无需 SDK 即可构建。
+device = ["dep:zectrix-sdk", "dep:tokio"]
+
+[dependencies]
+rusqlite = { version = "0.32", features = ["bundled"] }
+uuid = { version = "1", features = ["v4"] }
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+# 卡片渲染：fontdue 栅格化（纯 Rust），image 编码 PNG
+fontdue = "0.9"
+image = "0.25"
+# 设备接入依赖（feature 门控，保证仓库可独立构建）
+zectrix-sdk = { path = "../repos/zectrix-local-push-sdk", optional = true }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"], optional = true }
+
+[[bin]]
+name = "math-drill"
+path = "src/main.rs"
+
+[[bin]]
+name = "asr_probe"
+path = "src/bin/asr_probe.rs"
+
+[[bin]]
+name = "previews"
+path = "src/bin/previews.rs"
+
+[[bin]]
+name = "drill_device"
+path = "src/bin/drill_device.rs"
+required-features = ["device"]
+
+[[bin]]
+name = "probe"
+path = "src/bin/probe.rs"
+required-features = ["device"]
+
+[[bin]]
+name = "tone"
+path = "src/bin/tone.rs"
+required-features = ["device"]
+
+[lib]
+name = "math_drill"
+path = "src/lib.rs"
+
+[dev-dependencies]
+# 无额外依赖；集成测试通过 CARGO_BIN_EXE_ 驱动 CLI
